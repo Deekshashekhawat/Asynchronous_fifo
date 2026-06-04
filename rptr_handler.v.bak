@@ -1,0 +1,13 @@
+module rptr_handler(
+input rclk, r_rstn, r_en,
+input []g_wptr_sync;
+output []b_rptr,[]g_rptr, 
+output empty
+);
+
+
+wire []b_rptr_next;
+wire []g_rptr_next;
+
+
+endmodule
