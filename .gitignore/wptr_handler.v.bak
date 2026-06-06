@@ -29,7 +29,7 @@ assign g_wptr_next=b_wptr_next^(b_wptr_next>>1);
 //full logic
 
 
-assign w_full= g_wptr_next=={~[ptr_width:ptr_width-1]g_rptr_sync,[ptr_width-2:0]g_rptr_sync};
+assign w_full= (g_wptr_next=={~([ptr_width:(ptr_width-1)]g_rptr_sync),[(ptr_width-2):0]g_rptr_sync});
 
 always @(posedge wclk or negedge w_rstn)begin
 if(!w_rstn) full<=0;

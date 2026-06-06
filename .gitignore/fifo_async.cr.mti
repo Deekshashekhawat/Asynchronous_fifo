@@ -1,0 +1,29 @@
+D:/fifo_async/fifo_memory.v {1 {vlog -work work -vopt -stats=none D:/fifo_async/fifo_memory.v
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module fifo_memory
+
+Top level modules:
+	fifo_memory
+
+} {} {}} D:/fifo_async/synchronizers.v {1 {vlog -work work -vopt -stats=none D:/fifo_async/synchronizers.v
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module synchronizers
+
+Top level modules:
+	synchronizers
+
+} {} {}} D:/fifo_async/rptr_handler.v {1 {vlog -work work -vopt -stats=none D:/fifo_async/rptr_handler.v
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module rptr_handler
+
+Top level modules:
+	rptr_handler
+
+} {} {}} D:/fifo_async/wptr_handler.v {1 {vlog -work work -vopt -stats=none D:/fifo_async/wptr_handler.v
+QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+-- Compiling module wptr_handler
+
+Top level modules:
+	wptr_handler
+
+} {} {}}

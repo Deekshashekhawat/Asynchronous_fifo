@@ -4,14 +4,15 @@ module wptr_handler#(parameter ptr_width=3)(
 input wclk,w_rstn,w_en,
 input [ptr_width:0]g_rptr_sync,
 output reg full,
-output [ptr_width:0]b_wptr,[ptr_width:0]g_wptr
+output reg [ptr_width:0]b_wptr,
+output reg [ptr_width:0]g_wptr
 );
  
 wire [ptr_width:0]b_wptr_next;
 wire [ptr_width:0]g_wptr_next;
+wire w_full;
 
-
-always@(wclk&&!w_rstn)begin
+always@(wclk or !w_rstn)begin
 if(!w_rstn) begin
 b_wptr<=0;
 g_wptr<=0;
@@ -26,13 +27,13 @@ assign b_wptr_next=b_wptr+(w_en & !full);
 assign g_wptr_next=b_wptr_next^(b_wptr_next>>1);
 
 //full logic
-wire w_full;
 
-assign w_full= (g_wptr_next==(~[ptr_width:prt_width-1]g_rptr_sync,[ptr_width-2:0]g_rptr_sync));
+
+assign w_full= (g_wptr_next=={~g_rptr_sync[ptr_width:(ptr_width-1)],g_rptr_sync[(ptr_width-2):0]});
 
 always @(posedge wclk or negedge w_rstn)begin
 if(!w_rstn) full<=0;
-else full<=wfull;
+else full<=w_full;
 end
 
 endmodule

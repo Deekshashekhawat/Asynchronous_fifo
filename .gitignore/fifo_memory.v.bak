@@ -1,0 +1,23 @@
+module fifo_memory #(parameter data_width=8,depth=8,ptr_width=3)(
+ input [data_width-1:0]d_in,
+ input w_en,wclk,r_en,rclk,
+ input full,empty,
+ input [ptr_width:0]b_rptr,
+ input [ptr_width:0]b_wptr,
+ output reg [data_width-1:0]d_out
+);
+
+reg [data_width-1:0]fifo[0:depth-1];
+
+always@(posedge wclk)begin
+ if(!full&w_en)
+    fifo[b_wptr[ptr_width-1:0]]<=d_in;
+end
+
+always@(posedge rclk)begin
+ if(!empty&r_en)
+   d_out <=fifo[b_rptr[ptr_width-1:0]];
+end
+
+
+endmodule
